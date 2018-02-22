@@ -28,7 +28,7 @@ if (T < W+1)
 else
     data_phi = zeros(1, N);
     tmp_x = ones(1, N);
-    for i = 1:W,
+    for i = 1:W
         data_phi = data_phi + 1./tmp_x;
         tmp_x = tmp_x.*data(T-i+1, :);
     end
@@ -42,7 +42,7 @@ ell = max([0 epsilon - data_phi*weight_o]);
 % Step 4: Set parameter
 x_bar = mean(data_phi);
 denominator = (data_phi - x_bar)*(data_phi - x_bar)';
-if (~eq(denominator, 0.0)),
+if (~eq(denominator, 0.0))
     lambda = ell / denominator;
 else  % Zero volatility
     lambda = 0;

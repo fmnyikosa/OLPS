@@ -1,5 +1,5 @@
 function [cum_ret, cumprod_ret, daily_ret, daily_portfolio] ...
-    = olmar1(fid, data, varargins, opts)
+                                            = olmar1(fid, data, varargins, opts)
 % This program starts the OLMAR-1 algorithm
 %
 % function [cum_ret, cumprod_ret, daily_ret, daily_portfolio] ....

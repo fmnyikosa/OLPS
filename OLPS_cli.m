@@ -32,7 +32,7 @@ opts.progress         = 0;
 opts.his              = 0;
 
 if (nargin<1)
-    dataset = 'djia';
+    dataset           = 'djia';
 end
 
 %----------Benchmarks--------------

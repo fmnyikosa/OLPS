@@ -1,5 +1,5 @@
 function [cum_ret, cumprod_ret, daily_ret, ra_ret, run_time]...
-                         = manager(strategy_name, dataset_name, varargins, opts) 
+                     = manager_abo(strategy_name, dataset_name, varargins, opts) 
 % Manager: 
 % This program universally calls different OLPS strategies and datasets.
 %
@@ -32,8 +32,8 @@ function [cum_ret, cumprod_ret, daily_ret, ra_ret, run_time]...
 % This file is part of OLPS: http://OLPS.stevenhoi.org/
 % Original authors: Bin LI, Steven C.H. Hoi
 % Contributors: Doyen Sahoo
-% Change log: 
-%           Favour M Nyikosa
+%  
+% Modified by Favour Mandanji Nyikosa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Loading the Dataset stringed dataset_name
@@ -119,15 +119,14 @@ if (opts.log_mode)
     fclose(fid);
 end
 
-%% Email notivation, currently disabled.
-% %% Send the results to email: libin.yz@gmail.com
-% if (opts.log_mode) && (opts.mat_mode)
-%     msg_rcv = ['libin.yz@gmail.com'];
-%     msg_head = ['Results from MATLAB:' strategy_name '-' dataset_name '-' dt ];
-%     msg_body = ['cum_ret' num2str(cum_ret) '    ' 'run_time' num2str(run_time)];
-%     msg_attach =[file_name];
-% %    sendmail(msg_rcv, msg_head, msg_body,{msg_attach})
-% end
+%% Send the results to email: fmnyikosa@gmail.com
+if (opts.log_mode) && (opts.mat_mode)
+    msg_rcv    = ['fmnyikosa@gmail.com'];
+    msg_head   = ['Results from MATLAB:' strategy_name '-' dataset_name '-' dt ];
+    msg_body   = ['cum_ret',num2str(cum_ret),'    ','run_time', num2str(run_time)];
+    msg_attach = [file_name];
+    sendmail(  msg_rcv, msg_head, msg_body,{msg_attach} )
+end
 
 end
 %%%%%%%%%%%%%%End%%%%%%%%%%%%%%%%%%%%%%

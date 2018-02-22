@@ -82,7 +82,7 @@ ra_ret(7, 1) = t_stat;
 ra_ret(8, 1) = p_value;
 
 % Results for standard deviation of return and sharpe ratio.
-ra_ret(9, 1) = apy;
+ra_ret(9, 1)  = apy;
 ra_ret(10, 1) = stdev;
 ra_ret(11, 1) = sr;
 
