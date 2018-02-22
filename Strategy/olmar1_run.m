@@ -26,18 +26,19 @@ function [cum_ret, cumprod_ret, daily_ret, daily_portfolio]...
 % Contributors:
 % Change log: 
 %
+% Modified by Favour M Nyikosa
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 [n, m] = size(data);
 
 % Return variables
-cum_ret = 1;
+cum_ret     = 1;
 cumprod_ret = ones(n, 1);
-daily_ret = ones(n, 1);
+daily_ret   = ones(n, 1);
 
 % Portfolio weights, starting with uniform portfolio
-day_weight = ones(m, 1)/m;  %#ok<*NASGU>
-day_weight_o = zeros(m, 1);  % Last closing price adjusted portfolio
+day_weight      = ones(m, 1)/m;  %#ok<*NASGU>
+day_weight_o    = zeros(m, 1);  % Last closing price adjusted portfolio
 daily_portfolio = zeros(n, m);
 
 % print file head
@@ -54,14 +55,14 @@ if (opts.progress)
 	progress = waitbar(0,'Executing Algorithm...');
 end
 %% Trading
-for t = 1:1:n,
+for t = 1:1:n
     % Step 1: Receive stock price relatives
     if (t >= 3)
         [day_weight] = olmar1_kernel(data(1:t-1, :), day_weight, epsilon, W);
     end
 
     % Normalize the constraint, always useless
-    day_weight = day_weight./sum(day_weight);
+    day_weight            = day_weight./sum(day_weight);
     daily_portfolio(t, :) = day_weight';
     
     % Step 2: Cal t's daily return and total return
@@ -74,8 +75,8 @@ for t = 1:1:n,
     
     % Debug information
 	fprintf(fid, '%d\t%f\t%f\n', t, daily_ret(t, 1), cumprod_ret(t, 1));
-    if (~opts.quiet_mode),
-        if (~mod(t, opts.display_interval)),
+    if (~opts.quiet_mode)
+        if (~mod(t, opts.display_interval))
             fprintf(1, '%d\t%f\t%f\n', t, daily_ret(t, 1), cumprod_ret(t, 1));
         end
     end
@@ -95,8 +96,8 @@ fprintf(1, 'OLMAR1(epsilon:%.2f, W:%d, tc:%.4f]), Final return: %.2f\n', ...
     epsilon, W, tc, cum_ret);
 fprintf(1, '-------------------------------------\n');
 
-	if (opts.progress)	
-		close(progress);
-	end
+if (opts.progress)	
+    close(progress);
+end
 
 end

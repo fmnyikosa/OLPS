@@ -27,9 +27,9 @@ function [cum_ret, cumprod_ret, daily_ret, daily_portfolio] ...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Extract the parameters
-epsilon = varargins{1}; % reversion parameter \epsilon
-W = varargins{2};       % Window size
-tc = varargins{3};      % transaction cost fee rate
+epsilon = varargins{1};      % reversion parameter\epsilon
+W       = varargins{2};      % Window size
+tc      = varargins{3};      % transaction cost fee rate
 
 % Run the OLMAR-1 algorithm
 [cum_ret, cumprod_ret, daily_ret, daily_portfolio]...
