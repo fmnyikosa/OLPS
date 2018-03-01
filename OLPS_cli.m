@@ -21,7 +21,7 @@ function OLPS_cli(dataset)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%cd Strategy;
+cd Strategy;
 
 opts.quiet_mode       = 1; 
 opts.display_interval = 500;

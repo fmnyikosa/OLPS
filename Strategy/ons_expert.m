@@ -52,7 +52,7 @@ if (exist('OCTAVE_VERSION', 'builtin'))
     weight = qp([], H, f, Aeq, beq, lb, up);
 
 else
-    options = optimset('largescale','off', 'display', 'off', 'algorithm', 'active-set');
+    options = optimset('largescale','off', 'display', 'off', 'algorithm', 'trust-region-reflective');
 
     weight = quadprog(H, f, A, b, Aeq, beq, lb, up, [], options);
 end
