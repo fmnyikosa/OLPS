@@ -21,7 +21,7 @@ function OLPS_cli(dataset)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-cd Strategy;
+%cd Strategy;
 
 opts.quiet_mode       = 1; 
 opts.display_interval = 500;
@@ -62,10 +62,10 @@ manager('olmar1',          dataset, {10, 5, 0}, opts);
 manager('olmar2',          dataset, {10, 0.5, 0}, opts);
 
 %--------Pattern Matching based approach---------
-manager('bk',              dataset, {5, 10, 1, 0}, opts);
-manager('bnn',             dataset, {5, 10, 0}, opts);
-manager('corn',            dataset, {5, 0.1, 0}, opts);
-manager('cornu',           dataset, {5, 1, 0.1, 0}, opts);
-manager('cornk',           dataset, {5, 10, 0.1, 0, 1}, opts);
+% manager('bk',              dataset, {5, 10, 1, 0}, opts);
+% manager('bnn',             dataset, {5, 10, 0}, opts);
+% manager('corn',            dataset, {5, 0.1, 0}, opts);
+% manager('cornu',           dataset, {5, 1, 0.1, 0}, opts);
+% manager('cornk',           dataset, {5, 10, 0.1, 0, 1}, opts);
 
 end

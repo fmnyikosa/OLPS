@@ -121,13 +121,13 @@ end
 
 % Email notivation, currently disabled.
 %% Send the results to email: fmnyikosa@gmail.com
-if (opts.log_mode) && (opts.mat_mode)
-    msg_rcv = ['fmnyikosa@gmail.com'];
-    msg_head = ['Results from MATLAB:' strategy_name '-' dataset_name '-' dt ];
-    msg_body = ['cum_ret' num2str(cum_ret) '    ' 'run_time' num2str(run_time)];
-    msg_attach =[file_name];
-    sendmail(msg_rcv, msg_head, msg_body,{msg_attach})
-end
+% if (opts.log_mode) && (opts.mat_mode)
+%     msg_rcv = ['fmnyikosa@gmail.com'];
+%     msg_head = ['Results from MATLAB:' strategy_name '-' dataset_name '-' dt ];
+%     msg_body = ['cum_ret' num2str(cum_ret) '    ' 'run_time' num2str(run_time)];
+%     msg_attach =[file_name];
+%     sendmail(msg_rcv, msg_head, msg_body,{msg_attach})
+% end
 
 end
 %%%%%%%%%%%%%%End%%%%%%%%%%%%%%%%%%%%%%
