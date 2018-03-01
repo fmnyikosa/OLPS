@@ -58,7 +58,7 @@ manager('pamr_1',          dataset, {0.5, 500, 0}, opts);
 manager('pamr_2',          dataset, {0.5, 500, 0}, opts);
 manager('cwmr_var',        dataset, {2, 0.5, 0}, opts);
 manager('cwmr_stdev',      dataset, {2, 0.5, 0}, opts);
-manager('olmar1',          dataset, {10, 5, 0}, opts);
+%manager('olmar1',          dataset, {10, 5, 0}, opts);
 manager('olmar2',          dataset, {10, 0.5, 0}, opts);
 
 %--------Pattern Matching based approach---------
