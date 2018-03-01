@@ -6,11 +6,11 @@
 categories = categorical( ...
     { 'DJIA', 'SP500', 'TSE', 'MSCI', 'NYSE(O)', 'NYSE(N)' });
 
-results    = {            ...
+results    = [            ...
     ; ... DJIA
     ; ... SP500
     ; ... TSE
     ; ... MSCI
     ; ... NYSE(O)
     ; ... NYSE(N)
-    };
+    ];
