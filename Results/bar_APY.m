@@ -6,11 +6,21 @@
 categories = categorical( ...
     { 'DJIA', 'SP500', 'TSE', 'MSCI', 'NYSE(O)', 'NYSE(N)' });
 
+categories = categorical( ...
+    { 'DJIA', 'SP500', 'TSE', 'MSCI', 'NYSE(O)', 'NYSE(N)' });
+
+D  = [];
+S  = [];
+T  = [];
+M  = [];
+NO = [];
+MM = [];
+
 results    = [            ...
-    ; ... DJIA
-    ; ... SP500
-    ; ... TSE
-    ; ... MSCI
-    ; ... NYSE(O)
-    ; ... NYSE(N)
+    D; ... DJIA
+    S; ... SP500
+    T; ... TSE
+    M; ... MSCI
+    NO; ... NYSE(O)
+    NN; ... NYSE(N)
     ];
