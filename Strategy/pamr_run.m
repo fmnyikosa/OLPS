@@ -50,7 +50,14 @@ end
 if (opts.progress)
 	progress = waitbar(0,'Executing Algorithm...');
 end
-for t = 1:1:n,
+for t = 1:1:n
+    
+    % -------- adapt params ----------
+    % eta, beta, delta
+    
+    
+    % ---------
+    
     % Calculate t's portfolio at the beginning of t-th trading day
     if (t >= 2)
         [day_weight] = pamr_kernel(data(1:t-1, :), day_weight, eta);
@@ -74,6 +81,12 @@ for t = 1:1:n,
         eta = (daily_ret(t, 1) - epsilon)/denominator;
     end
     eta = max(0, eta);
+    
+    
+    % -------- Update BO Model ----------
+    
+    
+    % ---------
 
     % Debug information
     % Time consuming part, other way?

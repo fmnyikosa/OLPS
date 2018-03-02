@@ -57,7 +57,14 @@ end
 if (opts.progress)
 	progress = waitbar(0,'Executing Algorithm...');
 end
-for t = 1:1:n,
+for t = 1:1:n
+    
+    % -------- adapt params ----------
+    % eta, beta, delta
+    
+    
+    % ---------
+    
     % Calculate t's portfolio
     if (t >= 2)
         [day_weight, exp_w] ...
@@ -81,6 +88,11 @@ for t = 1:1:n,
         exp_ret(k-1, 1) = exp_ret(k-1, 1)*data(t, :)*exp_w(k-1, :)';
     end;
     exp_ret(:, 1) = exp_ret(:, 1)/sum(exp_ret(:, 1));
+    
+    % -------- Update BO Model ----------
+    
+    
+    % ---------
     
     % Debug information
     fprintf(fid, '%d\t%f\t%f\n', t, daily_ret(t, 1), cum_ret);

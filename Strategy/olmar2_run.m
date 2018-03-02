@@ -55,11 +55,18 @@ end
 
 data_phi = ones(1, m);
 
-%% Trading
+% Trading
 if (opts.progress)
 	progress = waitbar(0,'Executing Algorithm...');
 end
-for t = 1:1:n,
+for t = 1:1:n
+    
+    % -------- adapt params ----------
+    % eta, beta, delta
+    
+    
+    % ---------
+    
     % Step 1: Receive stock price relatives
     if (t >= 2)
         [day_weight, data_phi] ...
@@ -83,6 +90,12 @@ for t = 1:1:n,
     % fprintf(1, '%d\t%.2f\t%.2f\t%.2f\n', t, day_weight(1), day_weight(2), daily_ret(t, 1));
     % Adjust weight(t, :) for the transaction cost issue
     day_weight_o = day_weight.*data(t, :)'/daily_ret(t, 1);
+    
+    
+    % -------- Update BO model with new params ----------
+    
+    
+    % ---------
     
     % Debug information
     % Time consuming part, other way?

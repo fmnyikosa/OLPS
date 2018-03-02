@@ -38,11 +38,11 @@ end
 %----------Benchmarks--------------
 manager('ubah', dataset, {0}, opts);
 manager('best', dataset, {0}, opts);
-manager('ucrp', dataset, {0}, opts);
+%manager('ucrp', dataset, {0}, opts);
 manager('bcrp', dataset, {0}, opts);
 
 %---------Follow the Winner-------------------
-manager('up',             dataset, {0}, opts);
+%manager('up',             dataset, {0}, opts);
 manager('eg',             dataset, {0.05, 0}, opts);
 manager('ons',            dataset, {0, 1, 1/8, 0}, opts);
 

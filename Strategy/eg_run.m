@@ -50,7 +50,15 @@ end
 if (opts.progress)
 	progress = waitbar(0,'Executing Algorithm...');
 end
-for t = 1:1:n,
+for t = 1:1:n
+    
+    % --------  adapt params ----------
+    % eta
+    
+    
+    
+    % --------
+    
     % Calculate t's portfolio at the beginning of t-th trading day
     if (t >= 2)
         [day_weight] = eg_kernel(data(1:t-1, :), day_weight, eta);
@@ -68,12 +76,15 @@ for t = 1:1:n,
     % Adjust weight(t, :) for the transaction cost issue
     day_weight_o = day_weight.*data(t, :)'/daily_ret(t, 1);
     
+    
+    % -------- update BO model data --------
+    
     % Debug information
     % Time consuming part, other way?
     
     fprintf(fid, '%d\t%f\t%f\n', t, daily_ret(t, 1), cumprod_ret(t, 1));
     if (~opts.quiet_mode)
-        if (~mod(t, opts.display_interval)),
+        if (~mod(t, opts.display_interval))
             fprintf(1, '%d\t%f\t%f\n', t, daily_ret(t, 1), cumprod_ret(t, 1));
         end
     end

@@ -51,7 +51,14 @@ if (~opts.quiet_mode)
     fprintf(fid, 'day\t Daily Return\t Total return\n');
 end
 
-for t = 1:1:n,
+for t = 1:1:n
+    
+    % -------- adapt params ----------
+    % eta, beta, delta
+    
+    
+    % ---------
+    
     % Calculate t's portfolio
     if (t >=2)
         [day_weight] = corn_kernel(data(1:t-1, :), w, c);
@@ -67,6 +74,8 @@ for t = 1:1:n,
     cumprod_ret(t, 1) = cum_ret;
     
     day_weight_o = day_weight.*data(t, :)'/daily_ret(t, 1);
+    
+    
     
     % Debug information
     fprintf(fid, '%d\t%f\t%f\n', t, daily_ret(t, 1), cum_ret);
