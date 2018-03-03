@@ -1,4 +1,4 @@
-% THis function initialises the data for a BayesOpt model
+% This function initialises the data for a BayesOpt model
 %
 % Copyright (c) Favour Mandanji Nyikosa <favour@nyikosa.com> 3-MAR-2018
 
