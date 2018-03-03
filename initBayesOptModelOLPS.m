@@ -1,4 +1,4 @@
-% this function initilaizes a Bayesian optimization model for
+% This function initilaizes a Bayesian optimization model for
 % Online Portfilio Selection
 %
 % (c) Copyright Favour M Nyikosa <favour@nyikosa.com> March 3rd 2018
@@ -12,12 +12,15 @@ function model = initBayesOptModelOLPS()
 settings                    = getDefaultGPMetadataGPML();
 settings.hyp_opt_mode       = 2;
 
-% GP model 
+% GP model
 
-gpModel                     = {{'infGaussLik'},{'meanZero'},{'covOLPS'},{'likGauss'}};                              
+cov                         = {'covSum',{{'covSum',{{'covMaternard', 1},'covSEard'}},'covRQard'}};
+
+gpModel                     = {{'infGaussLik'},{'meanZero'},cov,{'likGauss'}};                              
 hyperparameters.mean        = [];
-l                           = 3;
-sf                          = 1;
+l                           = 3.0;
+sf                          = 1.0;
+alpha                       = 0.2;
 hyp_t                       = [l; sf; l; sf];
 hyp_s                       = [l; sf; alpha];
 hyperparameters.cov         = log( [ hyp_t; hyp_s ] );
@@ -28,10 +31,12 @@ settings.hyp                = hyperparameters;
 
 % Data settings
 
+settings.x0                 = [0, 0];
+
 settings.hyp_opt_mode_nres  = 50;
 settings.hyp_bounds_set     = 1;
-settings.hyp_lb             = log([ 0.01, 0.001, 0.01, 0.001,  0.01, 0.001, 0.001, 0.00001 ]);
-settings.hyp_ub             = log([ 10.0, 3.000, 10.0, 3.000,  10.0, 3.000, 2.000, 0.20000 ]);
+settings.hyp_lb             = log([ 00.010, 0.001, 00.01, 0.001,  00.010, 0.001, 0.001, 0.00001 ]);
+settings.hyp_ub             = log([ 10.000, 3.000, 10.00, 3.000,  10.000, 3.000, 2.000, 0.20000 ]);
 
 % ABO settings
 
@@ -45,7 +50,7 @@ settings.initial_time_tag   = max_t_train;
 settings.time_delta         = 1;
 settings.final_time_tag     = max_t_test;
 
-settings                    = getDefaultBOSettingsLCB(x0, iters, settings);
+settings                    = getDefaultBOSettingsLCB( settings.x0, 5000, settings );
 %settings                   = getDefaultBOSettingsEL(x0, iters, settings);
 %settings                   = getDefaultBOSettingsMinMean(x0, iters, settings);
 
@@ -59,6 +64,12 @@ settings.acq_opt_mode_nres  = 5;
 
 settings.tolX               = eps;
 settings.tolObjFunc         = eps;
+
+lb_                         = [ 0,     0];
+ub_                         = [ 5000,  5];
+
+lb                          = lb_;
+ub                          = ub_;
 
 settings.acq_bounds_set     = 1;
 settings.acq_lb             = lb;
@@ -93,6 +104,15 @@ settings.resetting          = 0;
 
 settings.alg                = 'ABO';
 
-model                       = settings;
+settings.time_stability_flag = 0; % a variable for checking if algol has stabilised
+settings.time_stability_peg  = 0; % peg for keeping track of number of times we see stability
+settings.time_stability_key  = 1; % number of times to see phenomenon before setting flag
+settings.time_gradient       = 0.1;
+
+settings.timeLengthscales    = [];
+
+model                        = settings;
+
+
 
 end
