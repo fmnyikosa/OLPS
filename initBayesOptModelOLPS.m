@@ -14,16 +14,16 @@ settings.hyp_opt_mode       = 2;
 
 % GP model
 
-cov                         = {'covSum',{{'covSum',{{'covMaternard', 1},'covSEard'}},'covRQard'}};
-
-gpModel                     = {{'infGaussLik'},{'meanZero'},cov,{'likGauss'}};                              
+cov                         = {'covSEard'}; %{'covSum',{{'covSum',{{'covMaternard', 1},'covSEard'}},'covRQard'}};
+% {'meanZero'}
+gpModel                     = {{'infGaussLik'},[],cov,{'likGauss'}};                              
 hyperparameters.mean        = [];
 l                           = 3.0;
-sf                          = 1.0;
+sf                          = 1.01;
 alpha                       = 0.2;
 hyp_t                       = [l; sf; l; sf];
 hyp_s                       = [l; sf; alpha];
-hyperparameters.cov         = log( [ hyp_t; hyp_s ] );
+hyperparameters.cov         = log([l; sf;]); % [ hyp_t; hyp_s ] );
 sn                          = 0.1;
 hyperparameters.lik         = log(sn);
 settings.gpModel            = gpModel;

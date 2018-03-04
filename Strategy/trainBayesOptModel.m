@@ -32,6 +32,9 @@ else
     [hyperparams_, model] = trainGP( model.x , model.y , model.hyp , model.gpModel , model );
     model.training_hyp    = hyperparams_;
     model.streamlined_hyp = hyperparams_;
+    
+    hyperparams_.cov
+    hyperparams_.lik
 
 end
 
