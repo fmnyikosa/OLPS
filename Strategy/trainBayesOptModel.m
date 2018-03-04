@@ -28,13 +28,16 @@ else
     
     %model.hyp
     %model.gpModel{3}
+    
+%     cov_hyp = model.hyp.cov
+%     lik_hyp = model.hyp.lik
 
     [hyperparams_, model] = trainGP( model.x , model.y , model.hyp , model.gpModel , model );
     model.training_hyp    = hyperparams_;
     model.streamlined_hyp = hyperparams_;
     
-    hyperparams_.cov
-    hyperparams_.lik
+%     cov_hyp = hyperparams_.cov
+%     lik_hyp = hyperparams_.lik
 
 end
 
